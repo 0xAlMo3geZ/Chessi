@@ -3,6 +3,7 @@ This class is responsible for storing all the information about the current stat
 
 """
 
+
 class GameState():
     def __init__(self):
         self.board = [
