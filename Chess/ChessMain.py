@@ -32,6 +32,9 @@ the main driver for our code. this will handle user input and updating the graph
 
 def main():
     p.init()
+    p.display.set_caption('Chessi')
+    Icon = p.image.load('Chess/images/icon.png')
+    p.display.set_icon(Icon)
     screen = p.display.set_mode((WIDTH, HEIGHT))
     clock = p.time.Clock()
     screen.fill(p.Color("white"))
