@@ -65,7 +65,7 @@ responsible for drawing the squares on the board.
 
 
 def drawBoard(screen):
-    colors = [p.Color("white"), p.Color("gray")]
+    colors = [p.Color("#F2E9EE"), p.Color("#783F10")]
     for r in range(DIMENSION):
         for c in range(DIMENSION):
             color = colors[((r+c) % 2)]
