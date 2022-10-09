@@ -43,8 +43,48 @@ def main():
             if e.type == p.QUIT:
                 running = False
 
+        drawGameState(screen, gs)
         clock.tick(MAX_FPS)
         p.display.flip
+
+
+'''
+responsible for all the graphics within a current game state.
+'''
+
+
+def drawGameState(screen, gs):
+    drawBoard(screen)  # draw squares on the board
+    # add in piece highlighting or move suggestions (later)
+    drawPieces(screen, gs.board)  # draw pieces on top of those squares
+
+
+'''
+responsible for drawing the squares on the board. 
+'''
+
+
+def drawBoard(screen):
+    colors = [p.Color("white"), p.Color("black")]
+    for r in range(DIMENSION):
+        for c in range(DIMENSION):
+            color = colors[((r+c) % 2)]
+            p.draw.rect(screen, color, p.Rect(
+                c*SQ_SIZE, r*SQ_SIZE, SQ_SIZE, SQ_SIZE))
+
+
+'''
+responsible for drawing the pieces on the using the current GameState.board
+'''
+
+
+def drawPieces(screen, board):
+    for r in range(DIMENSION):
+        for c in range(DIMENSION):
+            piece = board[r][c]
+            if piece != "--":  # not empty square
+                screen.blit(IMAGES[piece], p.Rect(
+                    c*SQ_SIZE, r*SQ_SIZE, SQ_SIZE, SQ_SIZE))
 
 
 if __name__ == "__main__":
