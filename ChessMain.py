@@ -3,7 +3,7 @@ This is the main driver file. it will be responsible for handling user input and
 
 """
 import pygame as p
-import engine
+import ChessEngine
 
 WIDTH = HEIGHT = 512  # 400 is another good option
 DIMENSION = 8  # dimensions of a chess board are 8x8
@@ -35,7 +35,7 @@ def main():
     screen = p.display.set_mode((WIDTH, HEIGHT))
     clock = p.time.Clock()
     screen.fill(p.Color("white"))
-    gs = engine.GameState()
+    gs = ChessEngine.GameState()
     loadImages()  # only do this once, before the while loop
     running = True
     while running:
@@ -45,7 +45,7 @@ def main():
 
         drawGameState(screen, gs)
         clock.tick(MAX_FPS)
-        p.display.flip
+        p.display.flip()
 
 
 '''
@@ -65,7 +65,7 @@ responsible for drawing the squares on the board.
 
 
 def drawBoard(screen):
-    colors = [p.Color("white"), p.Color("black")]
+    colors = [p.Color("white"), p.Color("gray")]
     for r in range(DIMENSION):
         for c in range(DIMENSION):
             color = colors[((r+c) % 2)]
