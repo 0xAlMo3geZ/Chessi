@@ -39,8 +39,9 @@ def main():
     clock = p.time.Clock()
     screen.fill(p.Color("white"))
     gs = ChessEngine.GameState()
-    validMoves = gs.getValidMoves
+    validMoves = gs.getValidMoves()
     moveMade = False  # this is our flag variable for when a move is made
+
     loadImages()  # only do this once, before the while loop
     running = True
     sqSelected = ()  # no square is selected, keeps track of the last click of the user (tuple: (row, col))
@@ -102,7 +103,7 @@ responsible for drawing the squares on the board.
 
 
 def drawBoard(screen):
-    colors = [p.Color("#F2E9EE"), p.Color("#783F10")]
+    colors = [p.Color("#c3a370"), p.Color("#714d2d")]
     for r in range(DIMENSION):
         for c in range(DIMENSION):
             color = colors[((r+c) % 2)]
