@@ -18,7 +18,7 @@
 3. Run `ChessMain.py`.
 4. Enjoy the game!
 
-#### Sic:
+## Extra:
 
 -   Press `z` to undo a move.
 -   Press `r` to reset the game.
