@@ -16,7 +16,6 @@ SQUARE_SIZE = BOARD_HEIGHT // DIMENSION
 MAX_FPS = 15
 IMAGES = {}
 
-
 """
 Initialize a global directory of images.
 This will be called exactly once in the main.
@@ -40,8 +39,8 @@ This will handle user input and updating the graphics.
 def main():
     p.init()
     p.display.set_caption('Chessi')
-    Icon = p.image.load('images/icon.png')
-    p.display.set_icon(Icon)
+    icon = p.image.load('images/icon.png')
+    p.display.set_icon(icon)
     screen = p.display.set_mode(
         (BOARD_WIDTH + MOVE_LOG_PANEL_WIDTH, BOARD_HEIGHT))
     clock = p.time.Clock()
@@ -65,7 +64,7 @@ def main():
 
     while running:
         human_turn = (game_state.white_to_move and player_one) or (
-            not game_state.white_to_move and player_two)
+                not game_state.white_to_move and player_two)
         for e in p.event.get():
             if e.type == p.QUIT:
                 p.quit()
@@ -191,7 +190,7 @@ def drawBoard(screen):
         for column in range(DIMENSION):
             color = colors[((row + column) % 2)]
             p.draw.rect(screen, color, p.Rect(column * SQUARE_SIZE,
-                        row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
+                                              row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
 
 
 """
@@ -206,7 +205,7 @@ def highlightSquares(screen, game_state, valid_moves, square_selected):
         s.set_alpha(100)
         s.fill(p.Color('green'))
         screen.blit(s, (last_move.end_col * SQUARE_SIZE,
-                    last_move.end_row * SQUARE_SIZE))
+                        last_move.end_row * SQUARE_SIZE))
     if square_selected != ():
         row, col = square_selected
         if game_state.board[row][col][0] == (
@@ -222,7 +221,7 @@ def highlightSquares(screen, game_state, valid_moves, square_selected):
             for move in valid_moves:
                 if move.start_row == row and move.start_col == col:
                     screen.blit(s, (move.end_col * SQUARE_SIZE,
-                                move.end_row * SQUARE_SIZE))
+                                    move.end_row * SQUARE_SIZE))
 
 
 """
@@ -307,7 +306,7 @@ def animateMove(move, screen, board, clock):
         if move.piece_captured != '--':
             if move.is_enpassant_move:
                 enpassant_row = move.end_row + \
-                    1 if move.piece_captured[0] == 'b' else move.end_row - 1
+                                1 if move.piece_captured[0] == 'b' else move.end_row - 1
                 end_square = p.Rect(
                     move.end_col * SQUARE_SIZE, enpassant_row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE)
             screen.blit(IMAGES[move.piece_captured], end_square)
