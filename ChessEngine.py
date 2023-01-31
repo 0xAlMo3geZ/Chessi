@@ -208,7 +208,7 @@ class GameState:
                                         king_col + check[3] * i)  # check[2] and check[3] are the check directions
                         valid_squares.append(valid_square)
                         if valid_square[0] == check_row and valid_square[
-                            1] == check_col:  # once you get to piece and check
+                                1] == check_col:  # once you get to piece and check
                             break
                 # get rid of any moves that don't block check or move king
                 # iterate through the list backwards when removing elements
@@ -453,7 +453,7 @@ class GameState:
                 piece_pinned = True
                 pin_direction = (self.pins[i][2], self.pins[i][3])
                 if self.board[row][col][
-                    1] != "Q":  # can't remove queen from pin on rook moves, only remove it on bishop moves
+                        1] != "Q":  # can't remove queen from pin on rook moves, only remove it on bishop moves
                     self.pins.remove(self.pins[i])
                 break
 
@@ -635,7 +635,7 @@ class Move:
         self.piece_captured = board[self.end_row][self.end_col]
         # pawn promotion
         self.is_pawn_promotion = (self.piece_moved == "wp" and self.end_row == 0) or (
-                self.piece_moved == "bp" and self.end_row == 7)
+            self.piece_moved == "bp" and self.end_row == 7)
         # en passant
         self.is_enpassant_move = is_enpassant_move
         if self.is_enpassant_move:
@@ -645,7 +645,7 @@ class Move:
 
         self.is_capture = self.piece_captured != "--"
         self.moveID = self.start_row * 1000 + self.start_col * \
-                      100 + self.end_row * 10 + self.end_col
+            100 + self.end_row * 10 + self.end_col
 
     """
     Overriding the equals method.
